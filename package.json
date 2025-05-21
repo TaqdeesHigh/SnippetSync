@@ -1,0 +1,172 @@
+{
+  "name": "snippet-sync",
+  "displayName": "SnippetSync",
+  "description": "Efficient code snippet management with local-first storage and GitHub Gists sync",
+  "version": "0.0.5-Beta",
+  "publisher": "TaqdeesHigh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TaqdeesHigh/SnippetSync"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "snippetSync.saveSnippet",
+        "title": "SnippetSync: Save Selected Code as Snippet"
+      },
+      {
+        "command": "snippetSync.insertSnippet",
+        "title": "SnippetSync: Insert Snippet"
+      },
+      {
+        "command": "snippetSync.searchSnippets",
+        "title": "SnippetSync: Search Snippets"
+      },
+      {
+        "command": "snippetSync.syncSnippets",
+        "title": "SnippetSync: Sync Snippets"
+      },
+      {
+        "command": "snippetSync.refreshSnippets",
+        "title": "SnippetSync: Refresh Snippets View"
+      },
+      {
+        "command": "snippetSync.saveSelectionAsSnippet",
+        "title": "Save Selection as Snippet"
+      }
+    ],
+      "views": {
+        "explorer": [
+          {
+            "id": "snippetSyncExplorer",
+            "name": "SnippetSync"
+          }
+        ]
+      },
+      "viewsWelcome": [
+        {
+          "view": "snippetSyncExplorer",
+          "contents": "No snippets yet. Create your first snippet by selecting code and using the 'Save Selection as Snippet' command.\n[Save Snippet](command:snippetSync.saveSnippet)"
+        }
+      ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "snippetSync.saveSnippet",
+          "group": "snippetSync"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "snippetSync.saveSelectionAsSnippet",
+          "group": "snippetSync"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "snippetSync.saveSnippet",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "snippetSync.insertSnippet",
+        "key": "ctrl+alt+i",
+        "mac": "cmd+alt+i"
+      }
+    ],
+    "configuration": {
+      "title": "SnippetSync",
+      "properties": {
+        "snippetSync.storageType": {
+          "type": "string",
+          "default": "json",
+          "enum": [
+            "json",
+            "sqlite"
+          ],
+          "description": "Storage backend for snippets (JSON or SQLite)"
+        },
+        "snippetSync.storagePath": {
+          "type": "string",
+          "default": "",
+          "description": "Custom path for storing snippets database (leave empty for default location)"
+        },
+        "snippetSync.enableGistSync": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable syncing snippets with GitHub Gists"
+        },
+        "snippetSync.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Personal Access Token for Gist sync (stored securely)"
+        },
+        "snippetSync.autoSyncInterval": {
+          "type": "number",
+          "default": 0,
+          "description": "Auto-sync interval in minutes (0 to disable auto-sync)"
+        },
+        "snippetSync.maxTagSuggestions": {
+          "type": "number",
+          "default": 5,
+          "description": "Maximum number of tag suggestions to show"
+        },
+        "snippetSync.caseSensitiveTags": {
+          "type": "boolean",
+          "default": false,
+          "description": "Make tag suggestions case-sensitive"
+        },
+        "snippetSync.enableInlineSnippets": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable inline snippet suggestions when typing @tagname"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.7",
+    "@types/sqlite3": "^3.1.8",
+    "@types/vscode": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "vscode-test": "^1.6.1",
+    "webpack": "^5.64.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "sqlite3": "^5.0.2"
+  }
+}
