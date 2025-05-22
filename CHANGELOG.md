@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.1.0] - 2025-05-22
+
+### Changed
+
+- Complete UI revamp for a cleaner and more intuitive experience
+
+### Added
+
+- Ability to delete saved snippets directly from the Snippets Explorer or search results
+
+---
+
 ## [0.0.5-Beta] - 2025-05-21
 
 ### Added
@@ -21,5 +33,3 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Settings for storage type, storage path, GitHub token, auto-sync interval, and tag behavior
 - Snippets Explorer view with categorized browsing
 - GitHub repository linked in extension manifest
-
----
