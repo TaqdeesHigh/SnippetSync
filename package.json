@@ -2,7 +2,7 @@
   "name": "snippet-sync",
   "displayName": "SnippetSync",
   "description": "Efficient code snippet management with local-first storage and GitHub Gists sync",
-  "version": "0.0.5-Beta",
+  "version": "0.1.0",
   "publisher": "TaqdeesHigh",
   "repository": {
     "type": "git",

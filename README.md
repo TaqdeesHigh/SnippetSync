@@ -12,6 +12,7 @@ SnippetSync is a powerful and efficient code snippet manager for VS Code that en
 - **Categorized View**: Browse snippets by tags, languages, or projects
 - **Optional GitHub Gists Sync**: Sync your snippets with GitHub Gists
 - **Keyboard Shortcuts**: Save and insert snippets quickly
+- **Snippet Deletion**: Delete snippets you no longer need
 
 ## Getting Started
 
@@ -28,6 +29,7 @@ SnippetSync is a powerful and efficient code snippet manager for VS Code that en
 - **SnippetSync: Search Snippets** - Search for snippets using various filters
 - **SnippetSync: Sync Snippets** - Sync snippets with GitHub Gists
 - **SnippetSync: Refresh Snippets View** - Refresh the snippets explorer view
+- **SnippetSync: Delete Snippet** - Delete a saved snippet
 
 ## Keyboard Shortcuts
 
@@ -70,6 +72,25 @@ To use GitHub Gists sync:
 - Create project-specific snippets by using the project name as a tag
 - Use the side panel to browse your snippets by category
 - When typing code, use `@tagname` to see relevant snippets as you type
+- Use the "Delete Snippet" command to remove snippets you no longer need. You can trigger this command from the command palette or from the Snippet Explorer context menu.
+
+## Snippet Explorer Context Menu
+
+The Snippet Explorer provides a categorized view of your snippets. Right-clicking on a snippet in the explorer reveals a context menu with the following options:
+
+- **Preview Snippet**: Opens the snippet in a preview panel.
+- **Quick Insert Snippet**: Inserts the snippet's code at the current cursor position.
+- **Copy Snippet**: Copies the snippet's code to the clipboard.
+- **Duplicate Snippet**: Creates a copy of the snippet with "(Copy)" appended to the title.
+- **Delete Snippet**: Deletes the snippet after confirmation.
+
+## Snippet Explorer Features
+
+The Snippet Explorer also offers the following features:
+
+- **Sorting**: Sort snippets by name, date, or language (ascending or descending) using the `SnippetSync: Sort Snippets` command.
+- **Filtering**: Filter snippets by title, description, code, tags, language, or project using the `SnippetSync: Filter Snippets` command. Clear the filter using the `SnippetSync: Clear Filter` command.
+- **Expanding/Collapsing**: Expand or collapse all categories and snippets using the `SnippetSync: Expand All` and `SnippetSync: Collapse All` commands, respectively.
 
 ## Security
 
