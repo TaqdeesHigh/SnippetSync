@@ -44,6 +44,10 @@
       {
         "command": "snippetSync.saveSelectionAsSnippet",
         "title": "Save Selection as Snippet"
+      },
+      {
+        "command": "snippetSync.deleteSnippet",
+        "title": "SnippetSync: Delete Snippet"
       }
     ],
       "views": {

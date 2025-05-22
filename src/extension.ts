@@ -7,6 +7,7 @@ import { registerSyncSnippetsCommand } from './commands/syncSnippets';
 import { SnippetTreeViewProvider } from './providers/snippetTreeViewProvider';
 import { setupInlineSnippetSuggestions } from './providers/inlineSnippetProvider';
 import { registerEditSnippetCommand } from './commands/editSnippet';
+import { registerDeleteSnippetCommand } from './commands/deleteSnippet';
 
 function registerContextMenuCommands(context: vscode.ExtensionContext) {
   const contextMenuCommand = vscode.commands.registerCommand(
@@ -31,13 +32,12 @@ function setupStatusBarItem(context: vscode.ExtensionContext) {
   snippetStatusBar.show();
   
   context.subscriptions.push(snippetStatusBar);
-  
-  // Register quick access command
   const quickAccessCommand = vscode.commands.registerCommand('snippetSync.quickAccess', async () => {
     const options = [
       'Search Snippets',
       'Save Selection as Snippet',
       'View All Snippets',
+      'Delete Snippet', 
       'Sync Snippets'
     ];
     
@@ -56,6 +56,9 @@ function setupStatusBarItem(context: vscode.ExtensionContext) {
         break;
       case 'View All Snippets':
         vscode.commands.executeCommand('snippetSyncExplorer.focus');
+        break;
+      case 'Delete Snippet':
+        vscode.commands.executeCommand('snippetSync.deleteSnippet');
         break;
       case 'Sync Snippets':
         vscode.commands.executeCommand('snippetSync.syncSnippets');
@@ -79,6 +82,7 @@ export async function activate(context: vscode.ExtensionContext) {
   const searchCommand = registerSearchSnippetsCommand(context);
   const syncCommand = registerSyncSnippetsCommand(context, snippetTreeProvider);
   const editCommand = registerEditSnippetCommand(context, snippetTreeProvider);
+  const deleteCommand = registerDeleteSnippetCommand(context, snippetTreeProvider); 
   const refreshCommand = vscode.commands.registerCommand(
     'snippetSync.refreshSnippets', 
     () => snippetTreeProvider.refresh()
@@ -108,6 +112,7 @@ export async function activate(context: vscode.ExtensionContext) {
     searchCommand,
     syncCommand,
     editCommand,
+    deleteCommand,
     refreshCommand
   );
 }
